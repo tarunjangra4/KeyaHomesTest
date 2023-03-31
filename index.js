@@ -39,7 +39,7 @@ function apiCall(name, phone, email) {
       },
     }),
     fromPortal: false,
-    requireOtp: false,
+    requireOtp: true,
   };
 
   axios
@@ -70,7 +70,6 @@ function sendOtp() {
   let verifyOtp = document.querySelector(".verification-otp-container");
   modalForm.style.display = "none";
   let mobileNo = document.querySelector(".verfication-no");
-  console.log(mobileNo, "mobile");
   mobileNo.innerHTML = phoneNo;
   verifyOtp.style.display = "block";
   axios
