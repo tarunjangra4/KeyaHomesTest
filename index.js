@@ -14,7 +14,8 @@ let token;
 let phoneNo;
 function apiCall(name, phone, email) {
   phoneNo = phone;
-  let url = window.location.href;
+  // let url = window.location.href;
+  let url = "https://tarunjangra4.github.io/KeyaHomesTest/?isOtp=true";
   let searchParams = new URLSearchParams(new URL(url).search);
   utm_source = searchParams.get("utm_source");
   utm_campaign = searchParams.get("utm_campaign");
