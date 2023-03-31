@@ -58,7 +58,6 @@ function apiCall(name, phone, email) {
           sendOtp();
         }, 10000);
       }
-      // verificationOtp();
     })
     .catch((error) => {
       console.log("error", error);
@@ -80,7 +79,7 @@ function sendOtp() {
     .catch((err) => {});
 }
 
-function verfiyOtp() {
+function verifyOtp() {
   let otpInput1 = document.querySelector("#_1st");
   let otpInput2 = document.querySelector("#_2nd");
   let otpInput3 = document.querySelector("#_3rd");
