@@ -63,8 +63,7 @@ function apiCall(name, phone, email) {
     });
 }
 
-function sendOtp(token1) {
-  console.log("token ", token1);
+function sendOtp() {
   let modalForm = document.querySelector(".modal-form-container");
   let verifyOtp = document.querySelector(".verification-otp-container");
   modalForm.style.display = "none";
@@ -73,7 +72,7 @@ function sendOtp(token1) {
   verifyOtp.style.display = "block";
   axios
     .post(
-      `http://api-dcrm-stage.fincity.in/open/opportunity/send-otp?token=${token1}`
+      `http://api-dcrm-stage.fincity.in/open/opportunity/send-otp?token=${token}`
     )
     .then((res) => {})
     .catch((err) => {});
