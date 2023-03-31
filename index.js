@@ -2,12 +2,10 @@
 //   axios
 //   .post("https://api-dcrm.fincity.com/open/opportunity", body)
 //   .then((res) => {
-//     console.log("success", res);
 //     verificationOtp();
 //     // window.location.href = "/thankyou.html";
 //   })
 //   .catch((error) => {
-//     console.log("error", error);
 //   });
 // }
 let token;
@@ -23,8 +21,6 @@ function apiCall(name, phone, email) {
   utm_content = searchParams.get("utm_content");
   utm_terms = searchParams.get("utm_terms");
   const isOtp = new URLSearchParams(new URL(url).search).get("isOtp");
-  console.log("isOtp ", isOtp);
-  console.log("seatch ", new URLSearchParams(new URL(url).search));
 
   let body = {
     phone: phone,
@@ -49,12 +45,11 @@ function apiCall(name, phone, email) {
     .post("http://api-dcrm-stage.fincity.in/open/opportunity", body)
     .then((res) => {
       if (isOtp) {
-        console.log("res", res);
         let modalForm = document.querySelector(".modal-form-container");
         let verifyOtp = document.querySelector(".verification-otp-container");
         modalForm.style.display = "none";
         verifyOtp.display = "flex";
-        token = res?.token;
+        token = res?.data?.token;
         sendOtp();
       } else {
         // setTimeout(() => {
