@@ -52,7 +52,7 @@ function apiCall(name, phone, email) {
         sendOtp();
       } else {
         setTimeout(() => {
-          window.location.href = "thankyou.html";
+          // window.location.href = "thankyou.html";
           sendOtp();
         }, 1000);
       }
