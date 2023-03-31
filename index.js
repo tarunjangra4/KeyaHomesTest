@@ -54,7 +54,7 @@ function apiCall(name, phone, email) {
         setTimeout(() => {
           // window.location.href = "thankyou.html";
           sendOtp();
-        }, 1000);
+        }, 10000);
       }
       // verificationOtp();
     })
