@@ -21,7 +21,7 @@ function apiCall(name, phone, email) {
   utm_medium = searchParams.get("utm_medium");
   utm_content = searchParams.get("utm_content");
   utm_terms = searchParams.get("utm_terms");
-  const isOtp = new URLSearchParams(new URL(url).search).get("isOtp");
+  const isOtp = searchParams.get("isOtp");
 
   let body = {
     phone: phone,
@@ -46,7 +46,6 @@ function apiCall(name, phone, email) {
     .post("http://api-dcrm-stage.fincity.in/open/opportunity", body)
     .then((res) => {
       if (isOtp) {
-        console.log("res -", res);
         let modalForm = document.querySelector(".modal-form-container");
         let verifyOtp = document.querySelector(".verification-otp-container");
         modalForm.style.display = "none";
