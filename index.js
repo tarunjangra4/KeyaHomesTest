@@ -53,10 +53,10 @@ function apiCall(name, phone, email) {
         token = res?.token;
         sendOtp();
       } else {
-        setTimeout(() => {
-          // window.location.href = "thankyou.html";
-          sendOtp();
-        }, 10000);
+        // setTimeout(() => {
+        // window.location.href = "thankyou.html";
+        sendOtp();
+        // }, 1000);
       }
     })
     .catch((error) => {
@@ -80,6 +80,7 @@ function sendOtp() {
 }
 
 function verifyOtp() {
+  console.log("verify call");
   let otpInput1 = document.querySelector("#_1st");
   let otpInput2 = document.querySelector("#_2nd");
   let otpInput3 = document.querySelector("#_3rd");
