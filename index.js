@@ -65,6 +65,7 @@ function apiCall(name, phone, email) {
 }
 
 function sendOtp(token1) {
+  console.log("token ", token1);
   let modalForm = document.querySelector(".modal-form-container");
   let verifyOtp = document.querySelector(".verification-otp-container");
   modalForm.style.display = "none";
@@ -441,7 +442,6 @@ function getMoreInformation() {
 }
 
 window.addEventListener("click", (e) => {
-  console.log(e.target);
   if (modal.style.display === "flex" && e.target == modal) {
     document.body.style.overflow = "scroll";
     modal.style.display = "none";
