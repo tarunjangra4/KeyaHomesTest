@@ -24,7 +24,7 @@ function apiCall(name, phone, email) {
   utm_terms = searchParams.get("utm_terms");
   const isOtp = new URLSearchParams(new URL(url).search).get("isOtp");
   console.log("isOtp ", isOtp);
-  console.log("seatch ", searchParams);
+  console.log("seatch ", new URLSearchParams(new URL(url).search));
 
   let body = {
     phone: phone,
