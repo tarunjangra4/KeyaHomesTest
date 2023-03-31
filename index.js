@@ -55,7 +55,7 @@ function apiCall(name, phone, email) {
       } else {
         // setTimeout(() => {
         // window.location.href = "thankyou.html";
-        sendOtp();
+        sendOtp(res?.token);
         // }, 1000);
       }
     })
@@ -64,7 +64,7 @@ function apiCall(name, phone, email) {
     });
 }
 
-function sendOtp() {
+function sendOtp(token1) {
   let modalForm = document.querySelector(".modal-form-container");
   let verifyOtp = document.querySelector(".verification-otp-container");
   modalForm.style.display = "none";
@@ -73,7 +73,7 @@ function sendOtp() {
   verifyOtp.style.display = "block";
   axios
     .post(
-      `http://api-dcrm-stage.fincity.in/open/opportunity/send-otp?token=${token}`
+      `http://api-dcrm-stage.fincity.in/open/opportunity/send-otp?token=${token1}`
     )
     .then((res) => {})
     .catch((err) => {});
