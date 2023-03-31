@@ -121,7 +121,10 @@ function detectLocation(e) {
               longitude: longitude,
             },
           })
-          .then((res) => {})
+          .then((res) => {
+            document.body.style.overflow = "scroll";
+            modal.style.display = "none";
+          })
           .catch((err) => {});
       },
       (error) => {
