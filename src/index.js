@@ -41,7 +41,7 @@ function apiCall(name, phone, email) {
   };
 
   axios
-    .post("https://api-dcrm.fincity.com/open/opportunity", body)
+    .post("http://api-dcrm-stage.fincity.in/open/opportunity", body)
     .then((res) => {
       if (isOtp) {
         let modalForm = document.querySelector(".modal-form-container");
@@ -72,7 +72,7 @@ function sendOtp() {
   verifyOtp.style.display = "block";
   axios
     .post(
-      `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${token}`
+      `http://api-dcrm-stage.fincity.in/open/opportunity/send-otp?token=${token}`
     )
     .then((res) => {})
     .catch((err) => {});
@@ -85,7 +85,7 @@ function verfiyOtp() {
   let otpInput4 = document.querySelector("#_4th");
   let otp = otpInput1 + otpInput2 + otpInput3 + otpInput4;
   axios
-    .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, {
+    .post(`http://api-dcrm-stage.fincity.in/open/opportunity/verify`, {
       token: token,
       otp: otp,
     })
