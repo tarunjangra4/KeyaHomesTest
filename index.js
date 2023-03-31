@@ -92,6 +92,7 @@ function verifyOtp() {
     })
     .then((res) => {
       if (res?.status === 200) {
+        document.querySelector(".location-container").style.display = "block";
       }
     })
     .catch((err) => {});
