@@ -1193,6 +1193,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.location-container{
+    text-align: center;
+}
 @media screen and (max-width: 1024px) {
     .navbar{
         display: none;

@@ -91,9 +91,37 @@ function verifyOtp() {
       otp: otp,
     })
     .then((res) => {
-      console.log(res, "picard");
+      if (res?.status === 200) {
+      }
     })
     .catch((err) => {});
+}
+
+const optionLocation = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function detectLocation(e) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // The location was successfully retrieved
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        // You can do something with the retrieved location data here
+      },
+      (error) => {
+        // There was an error retrieving the location
+        console.error(error);
+      },
+      optionLocation
+    );
+  } else {
+    console.log("geo-location not supported on your browser!");
+  }
 }
 
 function removeClass() {
@@ -573,12 +601,6 @@ function getDetails1() {
   apiCall(name4.value, phone4.value, email4.value);
 }
 
-const optionLocation = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0,
-};
-
 function clickEvent(first, last) {
   if (first.value.length) {
     document.getElementById(last).focus();
@@ -590,26 +612,5 @@ function moveFocusBack(e) {
 
   if (e.key === "Backspace" && e.target.value === "" && prevInput != null) {
     prevInput.focus();
-  }
-}
-
-function detectLocation(e) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        // The location was successfully retrieved
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-        // You can do something with the retrieved location data here
-      },
-      (error) => {
-        // There was an error retrieving the location
-        console.error(error);
-      },
-      optionLocation
-    );
-  } else {
-    console.log("geo-location not supported on your browser!");
   }
 }
