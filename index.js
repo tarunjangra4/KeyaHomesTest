@@ -46,6 +46,7 @@ function apiCall(name, phone, email) {
     .post("http://api-dcrm-stage.fincity.in/open/opportunity", body)
     .then((res) => {
       if (isOtp) {
+        console.log("res -", res);
         let modalForm = document.querySelector(".modal-form-container");
         let verifyOtp = document.querySelector(".verification-otp-container");
         modalForm.style.display = "none";
