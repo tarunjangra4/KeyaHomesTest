@@ -11,7 +11,9 @@
 //   });
 // }
 let token;
+let phoneNo;
 function apiCall(name, phone, email) {
+  phoneNo = phone;
   let url = window.location.href;
   let searchParams = new URLSearchParams(new URL(url).search);
   utm_source = searchParams.get("utm_source");
@@ -68,7 +70,7 @@ function sendOtp() {
   let verifyOtp = document.querySelector(".verification-otp-container");
   modalForm.style.display = "none";
   let mobileNo = document.querySelector(".verfication-no");
-  mobileNo.innerHTML = phone;
+  mobileNo.innerHTML = phoneNo;
   verifyOtp.style.display = "block";
   axios
     .post(
