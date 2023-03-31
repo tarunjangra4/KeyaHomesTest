@@ -85,6 +85,12 @@ function verifyOtp() {
   let otpInput3 = document.querySelector("#_3rd");
   let otpInput4 = document.querySelector("#_4th");
   let otp = otpInput1 + otpInput2 + otpInput3 + otpInput4;
+  console.log("otp ", otp);
+  let body = {
+    token: token,
+    otp: otp,
+  };
+  console.log("body ", body);
   axios
     .post(`http://api-dcrm-stage.fincity.in/open/opportunity/verify`, {
       token: token,
