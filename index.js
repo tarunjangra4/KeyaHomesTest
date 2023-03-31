@@ -52,10 +52,9 @@ function apiCall(name, phone, email) {
         token = res?.data?.token;
         sendOtp();
       } else {
-        // setTimeout(() => {
-        // window.location.href = "thankyou.html";
-        sendOtp(res?.token);
-        // }, 1000);
+        setTimeout(() => {
+          window.location.href = "thankyou.html";
+        }, 1000);
       }
     })
     .catch((error) => {
