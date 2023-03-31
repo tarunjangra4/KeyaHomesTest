@@ -113,11 +113,18 @@ function detectLocation(e) {
         // The location was successfully retrieved
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-        // You can do something with the retrieved location data here
+        axios
+          .post(`http://api-dcrm-stage.fincity.in/open/opportunity/verify`, {
+            token: token,
+            location: {
+              latitude: latitude,
+              longitude: longitude,
+            },
+          })
+          .then((res) => {})
+          .catch((err) => {});
       },
       (error) => {
-        // There was an error retrieving the location
         console.error(error);
       },
       optionLocation
@@ -125,6 +132,11 @@ function detectLocation(e) {
   } else {
     console.log("geo-location not supported on your browser!");
   }
+}
+
+function changeNo(e) {
+  document.querySelector(".verification-otp-container").style.display = "none";
+  document.querySelector(".modal-form-container").style.display = "block";
 }
 
 function removeClass() {
