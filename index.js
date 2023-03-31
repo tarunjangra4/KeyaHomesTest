@@ -79,25 +79,21 @@ function sendOtp() {
 }
 
 function verifyOtp() {
-  console.log("verify call");
   let otpInput1 = document.querySelector("#_1st");
   let otpInput2 = document.querySelector("#_2nd");
   let otpInput3 = document.querySelector("#_3rd");
   let otpInput4 = document.querySelector("#_4th");
   let otp =
     otpInput1.value + otpInput2.value + otpInput3.value + otpInput4.value;
-  console.log("otp ", otp);
-  let body = {
-    token: token,
-    otp: otp,
-  };
-  console.log("body ", body);
+
   axios
     .post(`http://api-dcrm-stage.fincity.in/open/opportunity/verify`, {
       token: token,
       otp: otp,
     })
-    .then((res) => {})
+    .then((res) => {
+      console.log(res, "picard");
+    })
     .catch((err) => {});
 }
 
