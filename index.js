@@ -1,13 +1,3 @@
-// function verificationOtp(){
-//   axios
-//   .post("https://api-dcrm.fincity.com/open/opportunity", body)
-//   .then((res) => {
-//     verificationOtp();
-//     // window.location.href = "/thankyou.html";
-//   })
-//   .catch((error) => {
-//   });
-// }
 let token;
 let phoneNo;
 function apiCall(name, phone, email) {
@@ -95,6 +85,9 @@ function verifyOtp() {
         document.querySelector(".verification-otp-container").style.display =
           "none";
         document.querySelector(".location-container").style.display = "block";
+        setTimeout(() => {
+          window.location.href = "https://dcrm-dev.fincity.in/";
+        }, 5000);
       }
     })
     .catch((err) => {});
