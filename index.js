@@ -32,7 +32,7 @@ function apiCall(name, phone, email, check) {
   };
 
   axios
-    .post("http://api-dcrm-dev.fincity.in/open/opportunity", body)
+    .post("https://api-dcrm.fincity.com/open/opportunity", body)
     .then((res) => {
       if (isOtp) {
         let modalForm = document.querySelector(
@@ -91,7 +91,7 @@ function sendOtp(check) {
   verifyOtp.style.display = "block";
   axios
     .post(
-      `http://api-dcrm-dev.fincity.in/open/opportunity/send-otp?token=${token}`
+      `https://api-dcrm.fincity.com/open/opportunity/send-otp?token=${token}`
     )
     .then((res) => {})
     .catch((err) => {});
@@ -114,7 +114,7 @@ function verifyOtp(check) {
     otpInput1.value + otpInput2.value + otpInput3.value + otpInput4.value;
 
   axios
-    .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, {
+    .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, {
       token: token,
       otp: otp,
     })
@@ -154,7 +154,7 @@ function detectLocation(e) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         axios
-          .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, {
+          .post(`https://api-dcrm.fincity.com/open/opportunity/verify`, {
             token: token,
             location: {
               lat: latitude,
