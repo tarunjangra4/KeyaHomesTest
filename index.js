@@ -1,16 +1,16 @@
 let token;
 let phoneNo;
-function apiCall(name, phone, email) {
+function apiCall(name, phone, email, check) {
   phoneNo = phone;
-  // let url = window.location.href;
-  let url = "https://tarunjangra4.github.io/KeyaHomesTest/?isOtp=true";
+  let url = window.location.href;
+  // let url = "https://tarunjangra4.github.io/KeyaHomesTest/?isOTP=true";
   let searchParams = new URLSearchParams(new URL(url).search);
   utm_source = searchParams.get("utm_source");
   utm_campaign = searchParams.get("utm_campaign");
   utm_medium = searchParams.get("utm_medium");
   utm_content = searchParams.get("utm_content");
   utm_terms = searchParams.get("utm_terms");
-  const isOtp = new URLSearchParams(new URL(url).search).get("isOtp");
+  const isOtp = new URLSearchParams(new URL(url).search).get("isOTP");
 
   let body = {
     phone: phone,
@@ -32,15 +32,27 @@ function apiCall(name, phone, email) {
   };
 
   axios
-    .post("http://api-dcrm-stage.fincity.in/open/opportunity", body)
+    .post("http://api-dcrm-dev.fincity.in/open/opportunity", body)
     .then((res) => {
       if (isOtp) {
-        let modalForm = document.querySelector(".modal-form-container");
-        let verifyOtp = document.querySelector(".verification-otp-container");
+        let modalForm = document.querySelector(
+          check == 1
+            ? ".form-wrapper"
+            : check == 2
+            ? ".modal-form-container"
+            : ".mobile-form-wrapper"
+        );
+        let verifyOtp = document.querySelector(
+          check == 1
+            ? ".verification-otp-container1"
+            : check == 2
+            ? ".verification-otp-container2"
+            : ".verification-otp-container4"
+        );
         modalForm.style.display = "none";
-        verifyOtp.display = "flex";
+        verifyOtp.style.display = "block";
         token = res?.data?.token;
-        sendOtp();
+        sendOtp(check);
       } else {
         setTimeout(() => {
           window.location.href = "thankyou.html";
@@ -52,43 +64,78 @@ function apiCall(name, phone, email) {
     });
 }
 
-function sendOtp() {
-  let modalForm = document.querySelector(".modal-form-container");
-  let verifyOtp = document.querySelector(".verification-otp-container");
+function sendOtp(check) {
+  let modalForm = document.querySelector(
+    check == 1
+      ? ".form-wrapper"
+      : check == 2
+      ? ".modal-form-container"
+      : ".mobile-form-wrapper"
+  );
+  let verifyOtp = document.querySelector(
+    check == 1
+      ? ".verification-otp-container1"
+      : check == 2
+      ? ".verification-otp-container2"
+      : ".verification-otp-container4"
+  );
   modalForm.style.display = "none";
-  let mobileNo = document.querySelector(".verfication-no");
+  let mobileNo = document.querySelector(
+    check == 1
+      ? ".verfication-no1"
+      : check == 2
+      ? ".verfication-no2"
+      : ".verfication-no4"
+  );
   mobileNo.innerHTML = phoneNo;
   verifyOtp.style.display = "block";
   axios
     .post(
-      `http://api-dcrm-stage.fincity.in/open/opportunity/send-otp?token=${token}`
+      `http://api-dcrm-dev.fincity.in/open/opportunity/send-otp?token=${token}`
     )
     .then((res) => {})
     .catch((err) => {});
 }
 
-function verifyOtp() {
-  let otpInput1 = document.querySelector("#_1st");
-  let otpInput2 = document.querySelector("#_2nd");
-  let otpInput3 = document.querySelector("#_3rd");
-  let otpInput4 = document.querySelector("#_4th");
+function verifyOtp(check) {
+  let otpInput1 = document.querySelector(
+    check == 1 ? "#__1st" : check == 2 ? "#_1st" : "#_1st_"
+  );
+  let otpInput2 = document.querySelector(
+    check == 1 ? "#__2nd" : check == 2 ? "#_2nd" : "#_2nd_"
+  );
+  let otpInput3 = document.querySelector(
+    check == 1 ? "#__3rd" : check == 2 ? "#_3rd" : "#_3rd_"
+  );
+  let otpInput4 = document.querySelector(
+    check == 1 ? "#__4th" : check == 2 ? "#_4th" : "#_4th_"
+  );
   let otp =
     otpInput1.value + otpInput2.value + otpInput3.value + otpInput4.value;
 
   axios
-    .post(`http://api-dcrm-stage.fincity.in/open/opportunity/verify`, {
+    .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, {
       token: token,
       otp: otp,
     })
     .then((res) => {
-      if (res?.status === 200) {
-        document.querySelector(".verification-otp-container").style.display =
-          "none";
-        document.querySelector(".location-container").style.display = "block";
-        setTimeout(() => {
-          window.location.href = "https://dcrm-dev.fincity.in/";
-        }, 5000);
-      }
+      document.querySelector(
+        check == 1
+          ? ".verification-otp-container1"
+          : check == 2
+          ? ".verification-otp-container2"
+          : ".verification-otp-container4"
+      ).style.display = "none";
+      document.querySelector(
+        check == 1
+          ? ".location-container1"
+          : check == 2
+          ? ".location-container2"
+          : ".location-container4"
+      ).style.display = "block";
+      setTimeout(() => {
+        window.location.href = "https://dcrm.fincity.com/?&user=consumer";
+      }, 5000);
     })
     .catch((err) => {});
 }
@@ -107,11 +154,11 @@ function detectLocation(e) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         axios
-          .post(`http://api-dcrm-stage.fincity.in/open/opportunity/verify`, {
+          .post(`http://api-dcrm-dev.fincity.in/open/opportunity/verify`, {
             token: token,
             location: {
-              latitude: latitude,
-              longitude: longitude,
+              lat: latitude,
+              lng: longitude,
             },
           })
           .then((res) => {
@@ -130,9 +177,21 @@ function detectLocation(e) {
   }
 }
 
-function changeNo(e) {
-  document.querySelector(".verification-otp-container").style.display = "none";
-  document.querySelector(".modal-form-container").style.display = "block";
+function changeNo(check) {
+  document.querySelector(
+    check == 1
+      ? ".verification-otp-container1"
+      : check == 2
+      ? ".verification-otp-container2"
+      : ".verification-otp-container4"
+  ).style.display = "none";
+  document.querySelector(
+    check == 1
+      ? ".form-wrapper"
+      : check == 2
+      ? ".modal-form-container"
+      : ".mobile-form-wrapper"
+  ).style.display = "block";
 }
 
 function removeClass() {
@@ -241,7 +300,7 @@ function handleChange1() {
 }
 
 function getDetails() {
-  apiCall(name1.value, phone1.value, email1.value);
+  apiCall(name1.value, phone1.value, email1.value, 1);
 }
 
 let rm2 = document.querySelector(".read-more2");
@@ -471,7 +530,7 @@ function handleChange2() {
 }
 
 function getMoreInformation() {
-  apiCall(name2.value, phone2.value, email2.value);
+  apiCall(name2.value, phone2.value, email2.value, 2);
 }
 
 window.addEventListener("click", (e) => {
@@ -609,7 +668,7 @@ function handleChange3() {
 }
 
 function getDetails1() {
-  apiCall(name4.value, phone4.value, email4.value);
+  apiCall(name4.value, phone4.value, email4.value, 4);
 }
 
 function clickEvent(first, last) {

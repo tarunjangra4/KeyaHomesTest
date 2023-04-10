@@ -381,6 +381,15 @@ a{
     background-color: #343a40;
 }
 
+.verification-otp-container1{
+    display: none;
+    padding: 20px;
+}
+.location-container1{
+    display: none;
+    text-align: center;
+}
+
 .validation {
     display: none;
     font-size: 14px;
@@ -1170,7 +1179,7 @@ a{
 .slider1{
     display: none;
 }
-.verification-otp-container{
+.verification-otp-container2{
     display: none;
     margin-top: 20px;
 }
@@ -1193,7 +1202,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-.location-container{
+.location-container2{
     display: none;
     text-align: center;
 }
@@ -1390,6 +1399,16 @@ input[type=number] {
         display: none;
         font-size: 14px;
         color: rgb(237, 49, 49);
+    }
+
+    .verification-otp-container4{
+        display: none;
+        padding: 20px 30px;
+    }
+    .location-container4{
+        display: none;
+        text-align: center;
+        padding-bottom: 30px;
     }
     
     .banner-left-side-text{

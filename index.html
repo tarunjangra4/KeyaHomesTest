@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -154,7 +153,7 @@
             <li>Private Terrace &amp; Gardens</li>
             <li>Vaastu Compliant</li>
           </ul>
-          <div class="start-price">3.3 Cr Onwards</div>
+          <div class="start-price">4 Cr Onwards</div>
           <p class="ready-for">Ready for Interiors</p>
           <button onclick="openModal()" class="btn-yellow open-modal">
             Enquire Now
@@ -180,7 +179,7 @@
           <li>Private Terrace &amp; Gardens</li>
           <li>Vaastu Compliant</li>
         </ul>
-        <div class="start-price">3.3 Cr Onwards</div>
+        <div class="start-price">4 Cr Onwards</div>
         <p class="ready-for">Ready for Interiors</p>
         <button onclick="openModal()" class="btn-yellow open-modal">
           Enquire Now
@@ -206,23 +205,38 @@
           <h2>Get Info On</h2>
           <form action="javascript:void(0)">
             <div>
-              <input class="form-input name3" type="text" placeholder="Name" onchange="handleNameChange3()" required />
+              <input class="form-input name3" 
+              type="text" 
+              placeholder="Name" 
+              onchange="handleNameChange3()"
+              onkeyup="handleNameChange3()" 
+              required 
+            />
               <span class="name-validation3 validation3">Name is required</span>
             </div>
             <div>
-              <input class="form-input phone3" id="phone3" placeholder="Phone" type="tel" maxlength="10"
-                onchange="handlePhoneChange3()" required />
+              <input class="form-input phone3" 
+              id="phone3" 
+              placeholder="Phone" 
+              type="tel" 
+              maxlength="10" 
+              oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);"
+              onchange="handlePhoneChange3()" 
+              onkeyup="handleNameChange3()" 
+              required 
+            />
               <span class="phone-validation3 validation3">Phone is required</span>
             </div>
             <div>
               <input class="form-input email3" type="text" id="email3" placeholder="Email Address"
-                onchange="handleEmailChange3()" required />
+                onchange="handleEmailChange3()" onkeyup="handleNameChange3()" required />
               <span class="email-validation3 validation3">
                 Email is required and should be valid
               </span>
             </div>
             <div class="mobile-tnc-container email3">
-              <input class="mobile-tnc-check" type="checkbox" onchange="handletncCheck3()" required />
+              <input class="mobile-tnc-check" type="checkbox" onchange="handletncCheck3()" onkeyup="handleNameChange3()"
+                required />
               <div class="mobile-tnc-text">
                 I hereby declare that I have read the consent and I appoint
                 and allow FINCITY to access my credit information and I/We
@@ -239,6 +253,76 @@
               Get Details
             </button>
           </form>
+        </div>
+        <div class="verification-otp-container4">
+          <div style="font-weight: 600; font-size: 20px">Verification Code</div>
+          <div style="font-weight: 300; margin-top: 15px">
+            Please Enter the Verification Code <br />
+            sent to +91
+            <span class="verfication-no4"></span>
+            <span style="color: rgb(61, 99, 235); font-weight: 400; cursor: pointer" class="change-no"
+              onclick="changeNo(4)">
+              Change
+            </span>
+          </div>
+          <div class="verify-otp-container">
+            <input class="otpInput" maxlength="1" id="_1st_" onkeyup="clickEvent(this, '_2nd_')" type="text"
+              onkeydown="moveFocusBack(event)" />
+            <input class="otpInput" maxlength="1" id="_2nd_" onkeyup="clickEvent(this, '_3rd_')" type="text"
+              onkeydown="moveFocusBack(event)" />
+            <input class="otpInput" maxlength="1" id="_3rd_" type="text" onkeyup="clickEvent(this, '_4th_')"
+              onkeydown="moveFocusBack(event)" />
+            <input class="otpInput" maxlength="1" id="_4th_" type="text" onkeydown="moveFocusBack(event)" />
+          </div>
+          <div style="
+                width: 100%;
+                text-align: center;
+                font-weight: 300;
+                margin-top: 25px;
+                cursor: pointer;
+              ">
+            Didn't receive OTP?
+          </div>
+          <div style="
+                width: 100%;
+                text-align: center;
+                font-weight: 600;
+                margin-top: 10px;
+                cursor: pointer;
+              " onclick="sendOtp(4)">
+            Resend OTP
+          </div>
+          <button style="
+                width: 100%;
+                padding: 12px 0;
+                border: 0px;
+                cursor: pointer;
+                background-color: #1e3c3c;
+                color: #fff;
+                font-size: 14px;
+                margin-top: 20px;
+              " onclick="verifyOtp(4)">
+            Verify
+          </button>
+        </div>
+        <div class="location-container4">
+          <img width="260px" height="200px" src="./asset/locationIcon.png" />
+          <div>
+            <div style="font-size: 20px;font-weight: 600;">Thank You!</div>
+            <div style="font-weight: 500;margin-top: 20px;">To Serve you better, <br /> Please Share your Location</div>
+            <button style="
+              margin-top: 15px;
+              width: 70%;
+              padding: 15px 0;
+              border-radius: 6px; 
+              border: 0;
+              background-color: #1e3c3c;
+              color:#fff;
+              cursor: pointer;
+              margin-top: 20px;" onclick="detectLocation()">
+              Detect My Location
+            </button>
+          </div>
         </div>
       </section>
 
@@ -760,19 +844,14 @@
             </thead>
             <tbody>
               <tr>
-                <td>4 BHK Penthouse</td>
-                <td>3300 - 4330 sq.ft.</td>
-                <td>3.3 Cr Onwards</td>
-              </tr>
-              <tr>
                 <td>4 BHK Duplex</td>
-                <td>3290 - 4470 sq.ft.</td>
-                <td>3.8 Cr Onwards</td>
+                <td>4000 - 5500 sq.ft.</td>
+                <td>4 Cr Onwards</td>
               </tr>
               <tr>
                 <td>5 BHK Penthouse</td>
-                <td>4300 - 4610 sq.ft.</td>
-                <td>4.3 Cr Onwards</td>
+                <td>4500 - 5800 sq.ft.</td>
+                <td>4.4 Cr Onwards</td>
               </tr>
             </tbody>
           </table>
@@ -782,25 +861,17 @@
         </div>
         <div class="mobile-price-box-wrapper">
           <div class="price-box">
-            <p class="type">4 BHK Penthouse</p>
-            <p class="area">3300 - 4330 sq.ft.</p>
-            <p class="rate">3.3 Cr Onwards</p>
-            <button class="open-modal" onclick="openModal()">
-              Price Breakup
-            </button>
-          </div>
-          <div class="price-box">
             <p class="type">4 BHK Duplex</p>
-            <p class="area">3290 - 4470 sq.ft.</p>
-            <p class="rate">3.8 Cr Onwards</p>
+            <p class="area">4000 - 5500 sq.ft.</p>
+            <p class="rate">4 Cr Onwards</p>
             <button class="open-modal" onclick="openModal()">
               Price Breakup
             </button>
           </div>
           <div class="price-box">
             <p class="type">5 BHK Penthouse</p>
-            <p class="area">4300 - 4610 sq.ft.</p>
-            <p class="rate">4.3 Cr Onwards</p>
+            <p class="area">4500 - 5800 sq.ft.</p>
+            <p class="rate">4.4 Cr Onwards</p>
             <button class="open-modal" onclick="openModal()">
               Price Breakup
             </button>
@@ -1021,7 +1092,8 @@
           </div>
           <div>
             <input class="form-input phone1" id="phone" placeholder="Phone" type="tel" maxlength="10"
-              onchange="handlePhoneChange1()" required />
+              oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" onchange="handlePhoneChange1()"
+              required />
             <span class="phone-validation validation">Phone is required</span>
           </div>
           <div>
@@ -1050,6 +1122,76 @@
           </button>
         </form>
       </div>
+      <div class="verification-otp-container1">
+        <div style="font-weight: 600; font-size: 20px">Verification Code</div>
+        <div style="font-weight: 300; margin-top: 15px">
+          Please Enter the Verification Code <br />
+          sent to +91
+          <span class="verfication-no1"></span>
+          <span style="color: rgb(61, 99, 235); font-weight: 400; cursor: pointer" class="change-no"
+            onclick="changeNo(1)">
+            Change
+          </span>
+        </div>
+        <div class="verify-otp-container">
+          <input class="otpInput" maxlength="1" id="__1st" onkeyup="clickEvent(this, '__2nd')" type="text"
+            onkeydown="moveFocusBack(event)" />
+          <input class="otpInput" maxlength="1" id="__2nd" onkeyup="clickEvent(this, '__3rd')" type="text"
+            onkeydown="moveFocusBack(event)" />
+          <input class="otpInput" maxlength="1" id="__3rd" type="text" onkeyup="clickEvent(this, '__4th')"
+            onkeydown="moveFocusBack(event)" />
+          <input class="otpInput" maxlength="1" id="__4th" type="text" onkeydown="moveFocusBack(event)" />
+        </div>
+        <div style="
+              width: 100%;
+              text-align: center;
+              font-weight: 300;
+              margin-top: 25px;
+              cursor: pointer;
+            ">
+          Didn't receive OTP?
+        </div>
+        <div style="
+              width: 100%;
+              text-align: center;
+              font-weight: 600;
+              margin-top: 10px;
+              cursor: pointer;
+            " onclick="sendOtp(1)">
+          Resend OTP
+        </div>
+        <button style="
+              width: 100%;
+              padding: 12px 0;
+              border: 0px;
+              cursor: pointer;
+              background-color: #1e3c3c;
+              color: #fff;
+              font-size: 14px;
+              margin-top: 20px;
+            " onclick="verifyOtp(1)">
+          Verify
+        </button>
+      </div>
+      <div class="location-container1">
+        <img width="260px" height="200px" src="./asset/locationIcon.png" />
+        <div>
+          <div style="font-size: 20px;font-weight: 600;">Thank You!</div>
+          <div style="font-weight: 500;margin-top: 20px;">To Serve you better, <br /> Please Share your Location</div>
+          <button style="
+            margin-top: 15px;
+            width: 70%;
+            padding: 15px 0;
+            border-radius: 6px; 
+            border: 0;
+            background-color: #1e3c3c;
+            color:#fff;
+            cursor: pointer;
+            margin-top: 20px;" onclick="detectLocation()">
+            Detect My Location
+          </button>
+        </div>
+      </div>
     </section>
   </main>
   <div class="modal">
@@ -1076,7 +1218,7 @@
             </div>
             <div>
               <input class="form-input phone2" id="phone2" placeholder="Phone" type="tel" maxlength="10"
-                onchange="handlePhoneChange2()" required />
+                onchange="handlePhoneChange2()" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" required />
               <span class="phone-validation1 validation1">Phone is required</span>
             </div>
             <div>
@@ -1106,13 +1248,14 @@
           </form>
         </div>
       </div>
-      <div class="verification-otp-container">
+      <div class="verification-otp-container2">
         <div style="font-weight: 600; font-size: 20px">Verification Code</div>
         <div style="font-weight: 300; margin-top: 15px">
           Please Enter the Verification Code <br />
           sent to +91
-          <span class="verfication-no"></span>
-          <span style="color: rgb(61, 99, 235); font-weight: 400; cursor: pointer" class="change-no" onclick="changeNo()">
+          <span class="verfication-no2"></span>
+          <span style="color: rgb(61, 99, 235); font-weight: 400; cursor: pointer" class="change-no"
+            onclick="changeNo(2)">
             Change
           </span>
         </div>
@@ -1131,7 +1274,7 @@
               font-weight: 300;
               margin-top: 25px;
               cursor: pointer;
-            " onclick="sendOtp()">
+            ">
           Didn't receive OTP?
         </div>
         <div style="
@@ -1140,7 +1283,7 @@
               font-weight: 600;
               margin-top: 10px;
               cursor: pointer;
-            " onclick="sendOtp()">
+            " onclick="sendOtp(2)">
           Resend OTP
         </div>
         <button style="
@@ -1152,16 +1295,15 @@
               color: #fff;
               font-size: 14px;
               margin-top: 20px;
-            " onclick="verifyOtp()">
+            " onclick="verifyOtp(2)">
           Verify
         </button>
       </div>
-      <div class="location-container">
+      <div class="location-container2">
         <img width="260px" height="200px" src="./asset/locationIcon.png" />
         <div style="font-size: 20px;font-weight: 600;">Thank You!</div>
         <div style="font-weight: 500;margin-top: 20px;">To Serve you better, <br /> Please Share your Location</div>
-        <button
-          style="
+        <button style="
           margin-top: 15px;
           width: 70%;
           padding: 15px 0;
@@ -1170,9 +1312,7 @@
           background-color: #1e3c3c;
           color:#fff;
           cursor: pointer;
-          margin-top: 20px;"
-          onclick="detectLocation()"
-        >
+          margin-top: 20px;" onclick="detectLocation()">
           Detect My Location
         </button>
       </div>
